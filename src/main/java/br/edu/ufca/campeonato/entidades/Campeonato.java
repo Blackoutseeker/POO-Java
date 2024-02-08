@@ -3,6 +3,7 @@ package br.edu.ufca.campeonato.entidades;
 import java.util.List;
 
 import static br.edu.ufca.campeonato.utils.Gerador.*;
+import static br.edu.ufca.campeonato.utils.Constantes.VISUALIZAR_PARTIDAS;
 
 public class Campeonato {
     public List<Clube> clubes;
@@ -12,6 +13,31 @@ public class Campeonato {
             throw new IllegalArgumentException("A lista de clubes deve conter no mínimo 2 clubes");
         }
         this.clubes = clubes;
+    }
+
+    /**
+     * Irá fazer uma iteração de ida e volta entre os clubes,
+     * fazendo com que joguem duas partidas com resultados distintos.
+     * Clubes com o mesmo nome não irão disputar entre si, obviamente.
+     * <p>
+     * OBS: é possível visualizar cada partida caso a constante "VISUALIZAR_PARTIDAS"
+     * esteja com o valor "true".
+     */
+    public void jogarCampeonato() {
+        for (int indice = 0; indice < clubes.size(); indice++) {
+            final Clube clubeM = clubes.get(indice);
+            for (Clube clubeV : clubes) {
+                final boolean saoClubesDiferentes = !clubeM.nome.equals(clubeV.nome);
+                if (saoClubesDiferentes) {
+                    jogarPartida(clubeM, clubeV);
+                    if (VISUALIZAR_PARTIDAS) {
+                        System.out.println("\n" + clubeM.nome + " x " + clubeV.nome);
+                        System.out.println("Pontos: " + clubeM.pontos + " x " + clubeV.pontos);
+                        System.out.println("Saldo de gols: " + clubeM.saldoGols + " x " + clubeV.saldoGols);
+                    }
+                }
+            }
+        }
     }
 
     /**
