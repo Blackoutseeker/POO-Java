@@ -26,4 +26,11 @@ public class ClubeTest {
         assertEquals(3, clube.pontos);
         assertEquals(golsFeitos, clube.saldoGols);
     }
+
+    @Test
+    void testEmpatar() {
+        clube.empatar();
+        assertEquals(1, clube.pontos);
+        assertEquals(0, clube.saldoGols);
+    }
 }
