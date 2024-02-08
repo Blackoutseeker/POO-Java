@@ -28,4 +28,12 @@ public class Clube {
     public void empatar() {
         pontos += 1;
     }
+
+    /**
+     * Não irá adicionar pontos ao clube, apenas irá subtrair seu saldo de gols conforme o placar.
+     * @param saldoGols O número de gols que será subtraído do saldo já existente.
+     */
+    public void perder(int saldoGols) {
+        this.saldoGols -= saldoGols;
+    }
 }
