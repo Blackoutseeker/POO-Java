@@ -17,4 +17,6 @@ public class Constantes {
             "São Paulo",
             "Vasco da Gama",
     };
+
+    public static final boolean VISUALIZAR_PARTIDAS = false;
 }
