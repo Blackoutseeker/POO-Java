@@ -40,4 +40,11 @@ public class Gerador {
         }
         return nomes;
     }
+
+    /**
+     * @return Um número aleatório dentro do intervalo [0, 5].
+     */
+    public static int gerarPlacarAleatorio() {
+        return random.nextInt(6);
+    }
 }
