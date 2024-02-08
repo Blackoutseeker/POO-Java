@@ -18,4 +18,12 @@ public class ClubeTest {
     void testCriacaoDeInstancia() {
         assertThrows(IllegalArgumentException.class, () -> new Clube(" "));
     }
+
+    @Test
+    void testGanhar() {
+        final int golsFeitos = 2;
+        clube.ganhar(golsFeitos);
+        assertEquals(3, clube.pontos);
+        assertEquals(golsFeitos, clube.saldoGols);
+    }
 }
