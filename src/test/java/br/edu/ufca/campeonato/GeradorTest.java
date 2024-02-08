@@ -48,4 +48,13 @@ class GeradorTest {
             assertTrue(checarSeNomeDoClubeEstaListado(clubeAleatorio));
         }
     }
+
+    @Test
+    void testGerarPlacarAleatorio() {
+        for (int indice = 0; indice < 50; indice++) {
+            final int placarAleatorio = gerarPlacarAleatorio();
+            final boolean estaDentroDoIntervalo = placarAleatorio >= 0 && placarAleatorio <= 5;
+            assertTrue(estaDentroDoIntervalo);
+        }
+    }
 }
