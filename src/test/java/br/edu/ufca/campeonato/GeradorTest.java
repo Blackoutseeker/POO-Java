@@ -2,9 +2,11 @@ package br.edu.ufca.campeonato;
 
 import static br.edu.ufca.campeonato.utils.Constantes.NOMES_DE_CLUBES;
 import static br.edu.ufca.campeonato.utils.Gerador.*;
+import br.edu.ufca.campeonato.entidades.Clube;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,6 +57,40 @@ class GeradorTest {
             final int placarAleatorio = gerarPlacarAleatorio();
             final boolean estaDentroDoIntervalo = placarAleatorio >= 0 && placarAleatorio <= 5;
             assertTrue(estaDentroDoIntervalo);
+        }
+    }
+
+    @Test
+    void testGerarDesempate() {
+        final List<Clube> clubes = new ArrayList<>();
+        final Clube clubeA = new Clube("Clube A");
+        final Clube clubeB = new Clube("Clube B");
+        final Clube clubeC = new Clube("Clube C");
+
+        clubeA.pontos = 5;
+        clubeB.pontos = 2;
+        clubeC.pontos = 5;
+
+        clubeA.saldoGols = 1;
+        clubeB.saldoGols = 10;
+        clubeC.saldoGols = 4;
+
+        // O "Clube C" deve ser o primeiro, e o "Clube B" o último
+
+        gerarDesempate(clubes);
+
+        for (int indice = 0; indice < clubes.size(); indice++) {
+            final Clube clube = clubes.get(indice);
+            if (indice == 1) {
+                // Verifica se o "Clube C" está em primeiro
+                assertEquals(5, clube.pontos);
+                assertEquals(4, clube.saldoGols);
+            }
+            if (indice == (clubes.size() - 1)) {
+                // Verifica se o "Clube B" está em último
+                assertEquals(2, clube.pontos);
+                assertEquals(10, clube.saldoGols);
+            }
         }
     }
 }
