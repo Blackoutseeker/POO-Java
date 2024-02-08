@@ -57,4 +57,10 @@ class CampeonatoTest {
         // O último clube classificado deve ser o "Clube B"
         assertEquals("Clube B", campeonato.clubes.get(indiceDoUltimoClube).nome);
     }
+
+    @Test
+    void testGetCampeao() {
+         final Clube clubeCampeao = campeonato.getCampeao();
+         assertEquals(clubeComMaiorPontuacao, clubeCampeao);
+    }
 }
