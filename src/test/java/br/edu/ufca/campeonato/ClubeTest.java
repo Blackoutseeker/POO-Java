@@ -33,4 +33,12 @@ public class ClubeTest {
         assertEquals(1, clube.pontos);
         assertEquals(0, clube.saldoGols);
     }
+
+    @Test
+    void testPerder() {
+        final int golsSofridos = 4;
+        clube.perder(golsSofridos);
+        assertEquals(0, clube.pontos);
+        assertEquals(-(golsSofridos), clube.saldoGols);
+    }
 }
