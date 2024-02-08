@@ -61,4 +61,19 @@ public class Campeonato {
         m.empatar();
         v.empatar();
     }
+
+    /**
+     * @return A classificação do campeonato, ordenando os times por nome, pontos e saldo de gols.
+     */
+    public String getClassificacao() {
+        gerarDesempate(clubes);
+        final StringBuilder classificacao = new StringBuilder();
+        for (final Clube clube : clubes) {
+            classificacao.append(clube.nome)
+                    .append("\n").append("- pontos: ").append(clube.pontos)
+                    .append("\n").append("- saldo de gols: ").append(clube.saldoGols)
+                    .append("\n\n");
+        }
+        return classificacao.toString();
+    }
 }
