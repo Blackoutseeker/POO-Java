@@ -21,4 +21,11 @@ public class Clube {
         pontos += 3;
         this.saldoGols += saldoGols;
     }
+
+    /**
+     * Irá adicionar 1 ponto ao clube, sem alterar seu saldo de gols.
+     */
+    public void empatar() {
+        pontos += 1;
+    }
 }
