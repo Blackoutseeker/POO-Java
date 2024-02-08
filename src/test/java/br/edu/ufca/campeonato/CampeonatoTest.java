@@ -48,4 +48,13 @@ class CampeonatoTest {
         final List<Clube> listaVazia = new ArrayList<>();
         assertThrows(IllegalArgumentException.class, () -> new Campeonato(listaVazia));
     }
+
+    @Test
+    void testOrdenacaoDaClassificacao() {
+        final int indiceDoUltimoClube = NOMES_DE_CLUBES.length - 1;
+        // O primeiro clube classificado deve ser o "Clube A"
+        assertEquals("Clube A", campeonato.clubes.get(0).nome);
+        // O último clube classificado deve ser o "Clube B"
+        assertEquals("Clube B", campeonato.clubes.get(indiceDoUltimoClube).nome);
+    }
 }
