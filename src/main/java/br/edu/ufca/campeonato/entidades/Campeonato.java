@@ -76,4 +76,11 @@ public class Campeonato {
         }
         return classificacao.toString();
     }
+
+    /**
+     * @return O clube com maior pontuação e saldo de gols do campeonato.
+     */
+    public Clube getCampeao() {
+        return clubes.get(0);
+    }
 }
