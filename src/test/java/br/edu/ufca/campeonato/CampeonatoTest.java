@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CampeonatoTest {
     static private Campeonato campeonato;
@@ -39,5 +41,11 @@ class CampeonatoTest {
         campeonato = new Campeonato(clubes);
         campeonato.jogarCampeonato();
         campeonato.getClassificacao();
+    }
+
+    @Test
+    void testCriacaoDeInstancia() {
+        final List<Clube> listaVazia = new ArrayList<>();
+        assertThrows(IllegalArgumentException.class, () -> new Campeonato(listaVazia));
     }
 }
